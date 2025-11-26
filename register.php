@@ -1,6 +1,7 @@
 <?php
 
 require './Validator.php';
+require './helper_functions.php';
 
 $validator = (new Validator($_POST))
     ->required('first_name')

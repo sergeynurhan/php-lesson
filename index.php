@@ -12,7 +12,7 @@
 
             <h3 class="text-center mb-4">Create Account</h3>
 
-            <form action="register.php" method="POST">
+            <form action="register.php" method="POST" enctype="multipart/form-data">
 
                 <div class="mb-3">
                     <label class="form-label">First Name</label>
@@ -71,6 +71,15 @@
                         name="address" 
                         class="form-control" 
                         
+                    >
+                </div>
+
+                <div class="mb-3">
+                    <div class="form-label">Image</div>
+                    <input
+                        type="file"
+                        name="image"
+                        class="form-control"
                     >
                 </div>
 
