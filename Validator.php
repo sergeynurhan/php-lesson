@@ -14,7 +14,7 @@ class Validator
      * @param string $field
      * @return self
      */
-    public function required(string $value, string $field): self
+    public function required(string $field): self
     {
         if (empty($this->fields[$field])) {
             $this->errors[$field][] = "The {$field} field is required!";
@@ -27,10 +27,10 @@ class Validator
      * @param string $field
      * @return self
      */
-    public function email(string $field): self
+    public function email(string $value): self
     {
-        if (! filter_var($field, FILTER_VALIDATE_EMAIL)) {
-            $this->errors[$field][] = "The {$field} field is not a valid email address!";
+        if (! filter_var($value, FILTER_VALIDATE_EMAIL)) {
+            $this->errors['email'][] = "The email field is not a valid email address!";
         }
 
         return $this;
@@ -72,5 +72,19 @@ class Validator
     public function errors(): array
     {
         return $this->errors;
+    }
+
+    /**
+     * @return void
+     */
+    public function validate(): void
+    {
+        if ($this->failed()) {
+            foreach ($this->errors() as $error) {
+                echo "<p style='color: red;'> {$error[0]} </p>";
+            }
+
+            die;
+        }
     }
 }
