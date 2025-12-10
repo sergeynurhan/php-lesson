@@ -7,6 +7,15 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
+    <?php
+        session_start();
+
+        if (isset($_SESSION['message'])) {
+            echo $_SESSION['message'];
+        }
+
+        session_destroy();
+    ?>
     <div class="container d-flex justify-content-center align-items-center min-vh-100">
         <div class="card shadow-sm p-4" style="width: 100%; max-width: 420px;">
 
